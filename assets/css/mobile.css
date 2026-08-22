@@ -1,0 +1,96 @@
+/* HAXED — dedicated smartphone layout */
+
+@media (max-width: 850px) {
+  :root { --gutter: 18px; }
+  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+  .site-header { padding: 13px 18px; }
+  .header-left { gap: 8px; min-width: 0; }
+  .brand { gap: 7px; font-size: 11px; }
+  .brand-logo-wrap { width: 25px; height: 25px; flex-basis: 25px; }
+  .theme-toggle { gap: 5px; padding: 3px 5px; }
+  .theme-track { width: 25px; height: 13px; }
+  .theme-knob { width: 9px; height: 9px; }
+  body.dark-mode .theme-knob { transform: translateX(12px); }
+  .menu-toggle { flex-shrink: 0; padding: 6px 0; }
+  .site-nav { inset: 57px 14px auto; max-height: calc(100svh - 75px); overflow-y: auto; }
+
+  .hero {
+    height: auto;
+    min-height: 100svh;
+    padding: 92px var(--gutter) 82px;
+    overflow: hidden;
+  }
+  .hero-top { font-size: 8px; gap: 12px; }
+  .hero-top .overline { max-width: 70%; line-height: 1.35; }
+  .hero-grid { margin-top: 42px; gap: 38px; }
+  .hero-copy { min-width: 0; }
+  .eyebrow { margin-bottom: 18px; font-size: 8px; gap: 7px; }
+  .live-dot { width: 6px; height: 6px; flex: 0 0 6px; }
+  .hero h1 { max-width: 100%; font-size: clamp(3.25rem, 17.5vw, 5.5rem); line-height: .86; letter-spacing: -.075em; }
+  .hero-lead { max-width: 100%; margin: 25px 0 24px; font-size: 14px; line-height: 1.55; }
+  .text-link { gap: 12px; font-size: 11px; }
+  .hero-frame { width: 100%; min-height: 0; aspect-ratio: 1 / 1.04; padding: 11px; }
+  .frame-art { margin: 10px 0; }
+  .art-word { font-size: clamp(2.5rem, 14vw, 4.5rem); }
+  .art-caption { font-size: 7px; }
+  .hero-ticker { height: 36px; }
+  .ticker-set { gap: 18px; padding-right: 18px; }
+  .ticker-track b { font-size: 12px; }
+
+  .section { padding: 90px var(--gutter); }
+  .section-label { gap: 13px; margin-bottom: 42px; font-size: 8px; }
+  .work-intro, .process-head { gap: 28px; margin-bottom: 55px; }
+  .work-intro h2, .services-title h2, .process-head h2, .contact h2 { font-size: clamp(3rem, 15.5vw, 5.2rem); line-height: .88; }
+  .work-intro p, .process-head p { max-width: 100%; font-size: 13px; line-height: 1.6; }
+  .project-list { gap: 48px; }
+  .project-visual, .project-half .project-visual { min-height: 0; height: auto; aspect-ratio: 1 / 1.02; }
+  .visual-number { left: 17px; bottom: 17px; font-size: clamp(4rem, 20vw, 7rem); }
+  .project-code { top: 14px; left: 15px; font-size: 8px; }
+  .project-info { padding-top: 14px; gap: 12px; }
+  .project h3 { font-size: clamp(1.55rem, 8vw, 2.4rem); }
+  .project-type { font-size: 8px; }
+  .project-arrow { width: 38px; height: 38px; flex: 0 0 38px; }
+
+  .services-grid { gap: 48px; }
+  .service { grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding: 23px 0; }
+  .service h3 { font-size: clamp(1.65rem, 8vw, 2.5rem); }
+  .service p { max-width: 100%; font-size: 12px; line-height: 1.55; }
+  .process-item { grid-template-columns: 30px minmax(0, 1fr); gap: 15px; padding: 25px 0; }
+  .process-item h3 { font-size: clamp(1.65rem, 8vw, 2.5rem); }
+  .process-item p { font-size: 12px; line-height: 1.55; }
+
+  .contact { min-height: 72svh; padding-top: 90px; padding-bottom: 35px; }
+  .contact-content .overline { margin-bottom: 22px; }
+  .contact-mail { max-width: 100%; margin-top: 35px; gap: 10px; font-size: clamp(1rem, 5.2vw, 1.6rem); overflow-wrap: anywhere; }
+  .contact-meta { gap: 8px; font-size: 8px; }
+  .contact-orbit { width: 125vw; height: 125vw; right: -55vw; bottom: -70vw; }
+
+  .site-footer { grid-template-columns: 1fr; gap: 30px; padding: 34px var(--gutter) 18px; }
+  .footer-identity { max-width: none; }
+  .footer-links { grid-template-columns: 1fr; gap: 25px; }
+  .footer-col { gap: 7px; font-size: 9px; }
+  .footer-bottom { grid-template-columns: 1fr; gap: 9px; align-items: start; }
+  .footer-bottom a { justify-self: start; }
+}
+
+@media (max-width: 520px) {
+  .site-header { padding-left: 14px; padding-right: 14px; }
+  .hero { padding-left: 14px; padding-right: 14px; padding-top: 88px; padding-bottom: 76px; }
+  .hero-grid { margin-top: 35px; gap: 32px; }
+  .hero h1 { font-size: clamp(3rem, 17.8vw, 4.7rem); }
+  .hero-frame { aspect-ratio: 1 / .98; }
+  .section { padding-left: 14px; padding-right: 14px; padding-top: 78px; padding-bottom: 78px; }
+  .section-label { margin-bottom: 34px; }
+  .work-intro, .process-head { margin-bottom: 45px; }
+  .work-intro h2, .services-title h2, .process-head h2, .contact h2 { font-size: clamp(2.75rem, 15.5vw, 4.5rem); }
+  .project-list { gap: 42px; }
+  .project-visual, .project-half .project-visual { aspect-ratio: 1 / 1; }
+  .project-info { align-items: center; }
+  .project-arrow { width: 34px; height: 34px; flex-basis: 34px; font-size: 12px; }
+  .contact { min-height: 78svh; }
+  .site-footer { padding-left: 14px; padding-right: 14px; }
+}
+
+@media (hover: none) {
+  .project:hover .visual-shape, .project:hover .project-arrow, .service:hover .service-symbol, .process-item:hover .process-mark, .play-button:hover, .nav-contact:hover { transform: none; }
+}
