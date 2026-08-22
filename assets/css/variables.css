@@ -1,0 +1,30 @@
+:root {
+  /* Original / white theme */
+  --paper: #f1eee8;
+  --paper-2: #e6e1d8;
+  --ink: #101113;
+  --muted: #6f706e;
+  --line: rgba(16, 17, 19, .16);
+  --line-light: rgba(255,255,255,.2);
+
+  /* Accent */
+  --orange: #ff5b35;
+  --orange-dark: #d83d1c;
+  --blue: #234dff;
+  --black: #101113;
+
+  /* Dark theme */
+  --dark-paper: #111214;
+  --dark-paper-2: #191b1f;
+  --dark-ink: #f1eee8;
+  --dark-muted: #9b9da1;
+  --dark-line: rgba(241,238,232,.16);
+  --dark-line-light: rgba(241,238,232,.2);
+
+  --max: 1380px;
+  --gutter: clamp(20px, 4vw, 64px);
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --serif: Georgia, "Times New Roman", serif;
+  --mono: "DM Mono", monospace;
+  --sans: "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
