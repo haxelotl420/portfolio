@@ -40,7 +40,6 @@ export async function onRequestPost(context) {
     return json({ ok: false, message: "Dati del modulo non validi." }, 400);
   }
 
-  // Honeypot anti-bot: the field is intentionally invisible to normal visitors.
   if (clean(form.get("website"), 200)) {
     return json({ ok: true, message: "Richiesta inviata." });
   }
@@ -58,13 +57,14 @@ export async function onRequestPost(context) {
     return json({ ok: false, message: "Inserisci un indirizzo email valido." }, 400);
   }
 
-  const accountId = env.CF_EMAIL_ACCOUNT_ID;
-  const apiToken = env.CF_EMAIL_API_TOKEN;
-  const from = env.CF_EMAIL_FROM || "dennisbertozzi@haxed.art";
-  const to = env.CF_EMAIL_TO || "dennisbertozzi@haxed.art";
+  // The Brevo API key is stored as a Cloudflare Secret named BREVO_API_KEY.
+  // It is never exposed to the browser or committed to GitHub.
+  const apiKey = env.BREVO_API_KEY;
+  const from = env.BREVO_FROM_EMAIL || "dennisbertozzi@haxed.art";
+  const to = env.BREVO_TO_EMAIL || "dennisbertozzi@haxed.art";
 
-  if (!accountId || !apiToken) {
-    console.error("Contact form: Cloudflare Email Service credentials are not configured.");
+  if (!apiKey) {
+    console.error("Contact form: BREVO_API_KEY is not configured.");
     return json({ ok: false, message: "Il modulo non è ancora configurato. Riprova più tardi." }, 503);
   }
 
@@ -73,18 +73,18 @@ export async function onRequestPost(context) {
   const safeMessage = escapeHtml(message).replaceAll("\n", "<br>");
 
   const payload = {
-    to,
-    from,
-    replyTo: email,
+    sender: { email: from, name: "HAXED — Dennis Bertozzi" },
+    to: [{ email: to, name: "Dennis Bertozzi" }],
+    replyTo: { email },
     subject: `Nuova richiesta dal portfolio — ${name}`,
-    text: [
+    textContent: [
       `Nome / Azienda: ${name}`,
       `Email: ${email}`,
       "",
       "Richiesta:",
       message,
     ].join("\n"),
-    html: `
+    htmlContent: `
       <div style="font-family:Arial,sans-serif;line-height:1.6;color:#161719">
         <h2>Nuova richiesta dal portfolio HAXED</h2>
         <p><strong>Nome / Azienda:</strong> ${safeName}</p>
@@ -96,18 +96,19 @@ export async function onRequestPost(context) {
   };
 
   try {
-    const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${encodeURIComponent(accountId)}/email/sending/send`, {
+    const response = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${apiToken}`,
+        "api-key": apiKey,
         "Content-Type": "application/json",
+        "Accept": "application/json",
       },
       body: JSON.stringify(payload),
     });
 
     if (!response.ok) {
       const details = await response.text();
-      console.error("Contact form: Cloudflare Email Service error", response.status, details);
+      console.error("Contact form: Brevo API error", response.status, details);
       return json({ ok: false, message: "Non è stato possibile inviare la richiesta. Riprova tra poco." }, 502);
     }
 
