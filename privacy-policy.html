@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
 <body class="dark-mode legal-document">
   <header class="legal-header">
@@ -25,7 +26,7 @@
     <article class="legal-wrap">
       <p class="legal-kicker">HAXED / DENNIS BERTOZZI</p>
       <h1>Privacy <em>Policy.</em></h1>
-      <p class="legal-intro">Informativa sul trattamento dei dati personali relativa al sito portfolio di Dennis Bertozzi, in arte Haxed. Questa pagina è predisposta sulla base delle funzionalità presenti nel sito e deve essere completata con i dati identificativi e tecnici definitivi prima della pubblicazione.</p>
+      <p class="legal-intro">Informativa sul trattamento dei dati personali relativa al sito portfolio di Dennis Bertozzi, in arte Haxed. La presente informativa descrive anche il nuovo modulo di contatto presente nella sezione Contact.</p>
 
       <section class="legal-section">
         <h2>1. Titolare del trattamento</h2>
@@ -37,59 +38,75 @@
       </section>
 
       <section class="legal-section">
-        <h2>2. Quali dati possono essere trattati</h2>
-        <p>Il sito è un portfolio statico e, allo stato attuale, non contiene un modulo di registrazione o un'area personale. I dati possono essere trattati principalmente quando l'utente decide volontariamente di contattare il titolare tramite i recapiti pubblicati sul sito.</p>
-        <p>Possono inoltre essere trattati dati tecnici necessari alla sicurezza e al funzionamento del servizio, come indirizzo IP, informazioni sul browser, dispositivo, data e ora della richiesta e dati presenti nei log del server, secondo le modalità definite dal fornitore di hosting.</p>
+        <h2>2. Quali dati vengono raccolti</h2>
+        <p>Il sito è un portfolio e non prevede registrazione, account personali o newsletter. Nella sezione Contact è presente un modulo che permette all'utente di inviare volontariamente:</p>
+        <ul>
+          <li><strong>Nome / Azienda</strong>;</li>
+          <li><strong>indirizzo email</strong>;</li>
+          <li><strong>testo della richiesta</strong>.</li>
+        </ul>
+        <p>Il modulo non richiede altri dati personali e non prevede l'upload di file. Il sito non utilizza il modulo per finalità pubblicitarie o di profilazione.</p>
+        <p>Possono inoltre essere trattati dati tecnici necessari alla sicurezza e al funzionamento del servizio, come indirizzo IP, informazioni sul browser, dispositivo, data e ora della richiesta e dati presenti nei log dell'infrastruttura Cloudflare, secondo le modalità effettivamente applicate dal servizio.</p>
       </section>
 
       <section class="legal-section">
         <h2>3. Finalità e basi giuridiche</h2>
         <ul>
-          <li><strong>Funzionamento e sicurezza del sito:</strong> interesse legittimo del titolare e necessità tecnica di erogare il servizio.</li>
           <li><strong>Gestione delle richieste di contatto e dei preventivi:</strong> esecuzione di misure precontrattuali adottate su richiesta dell'interessato e, quando necessario, esecuzione del rapporto contrattuale.</li>
+          <li><strong>Funzionamento e sicurezza del sito e del modulo:</strong> interesse legittimo del titolare e necessità tecnica di erogare e proteggere il servizio.</li>
           <li><strong>Adempimenti di legge:</strong> adempimento di obblighi legali cui è soggetto il titolare.</li>
           <li><strong>Preferenza del tema chiaro/scuro:</strong> il sito salva localmente nel browser la preferenza scelta dall'utente tramite <code>localStorage</code>. Questo meccanismo non utilizza un cookie di profilazione.</li>
         </ul>
       </section>
 
       <section class="legal-section">
-        <h2>4. Strumenti e servizi esterni</h2>
+        <h2>4. Come funziona il modulo di contatto</h2>
+        <p>Quando l'utente invia il modulo, i dati vengono trasmessi a una <strong>Cloudflare Pages Function</strong> all'indirizzo tecnico <code>/api/contact</code>. La funzione valida i campi, non salva i dati in un database del sito e inoltra la richiesta tramite <strong>Cloudflare Email Service</strong> all'indirizzo professionale del titolare.</p>
+        <p>Il messaggio ricevuto dal titolare contiene il nome / azienda, l'indirizzo email e il testo della richiesta. L'indirizzo email dell'utente viene impostato come indirizzo di risposta (<em>Reply-To</em>) per consentire al titolare di rispondere direttamente.</p>
+        <p><strong>Fornitore infrastrutturale:</strong> Cloudflare, Inc. — <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Informativa privacy di Cloudflare</a>.</p>
+        <p>Per l'invio tramite Cloudflare Email Service, il sito utilizza le API di Cloudflare. Le funzionalità e le condizioni del servizio possono cambiare; prima della pubblicazione definitiva il titolare deve verificare il proprio piano Cloudflare, le configurazioni del dominio e gli eventuali accordi sul trattamento dei dati applicabili al proprio account.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>5. Strumenti e servizi esterni</h2>
         <p>Il foglio di stile del sito richiama attualmente i caratteri <strong>Manrope</strong> e <strong>DM Mono</strong> tramite Google Fonts. Se tale collegamento esterno rimane attivo, il caricamento dei caratteri comporta una richiesta verso l'infrastruttura del fornitore del servizio e può comportare il trattamento di dati tecnici della connessione.</p>
         <p><strong>Fornitore:</strong> Google LLC — <a href="https://policies.google.com/privacy?hl=it" target="_blank" rel="noopener noreferrer">Norme sulla privacy di Google</a>.</p>
+        <p>Il sito non integra attualmente Google Analytics, Meta Pixel, sistemi pubblicitari o altri strumenti di profilazione.</p>
       </section>
 
       <section class="legal-section">
-        <h2>5. Conservazione dei dati</h2>
-        <p>I dati ricevuti tramite contatto vengono conservati per il tempo necessario a gestire la richiesta e, successivamente, per il periodo necessario a tutelare i diritti del titolare o ad adempiere agli obblighi di legge. I tempi effettivi devono essere definiti in funzione dell'organizzazione del titolare e dei relativi obblighi fiscali e contrattuali.</p>
-        <p>I dati tecnici presenti nei log del server possono essere conservati per il tempo strettamente necessario alle finalità di sicurezza, funzionamento e accertamento di eventuali anomalie o illeciti, secondo le configurazioni tecniche effettivamente adottate.</p>
+        <h2>6. Conservazione dei dati</h2>
+        <p>Le richieste inviate tramite il modulo non vengono archiviate in un database del portfolio. Dopo l'invio, il contenuto viene trasmesso tramite l'infrastruttura Cloudflare e consegnato alla casella email professionale del titolare.</p>
+        <p>Il titolare conserva le comunicazioni ricevute per il tempo necessario a gestire la richiesta, eventuali rapporti professionali e i relativi obblighi di legge, nonché per il periodo necessario alla tutela dei propri diritti. I tempi effettivi dipendono dalla natura della richiesta e dagli obblighi fiscali, civilistici e contrattuali applicabili.</p>
+        <p>I dati tecnici presenti nei log possono essere conservati per il tempo necessario alle finalità di sicurezza, funzionamento e accertamento di eventuali anomalie o illeciti, secondo le configurazioni e le policy del servizio Cloudflare effettivamente utilizzato.</p>
       </section>
 
       <section class="legal-section">
-        <h2>6. Destinatari dei dati</h2>
-        <p>I dati possono essere trattati da soggetti che forniscono servizi tecnici al titolare, come servizi di infrastruttura/server, servizi email e, se mantenuto, il servizio esterno utilizzato per i web font. Tali soggetti operano nei limiti delle rispettive responsabilità e, ove previsto, in qualità di responsabili del trattamento.</p>
-        <p>L'elenco dei fornitori e dei soggetti che possono accedere ai dati viene mantenuto aggiornato in relazione ai servizi effettivamente utilizzati dal sito.</p>
+        <h2>7. Destinatari dei dati</h2>
+        <p>I dati possono essere trattati dal titolare e dai fornitori tecnici necessari all'erogazione del servizio, in particolare Cloudflare per l'infrastruttura web, le Pages Functions e il servizio email utilizzato per la trasmissione delle richieste, nonché Google LLC per i web font se il collegamento esterno resta attivo.</p>
+        <p>I fornitori vengono utilizzati nei limiti delle rispettive funzioni e, ove previsto dalla normativa e dagli accordi applicabili, in qualità di responsabili del trattamento o secondo il ruolo giuridico previsto per lo specifico servizio.</p>
       </section>
 
       <section class="legal-section">
-        <h2>7. Trasferimenti fuori dallo Spazio Economico Europeo</h2>
-        <p>Eventuali trasferimenti di dati verso paesi extra SEE devono essere verificati in relazione ai servizi effettivamente utilizzati dal sito e alle garanzie applicabili previste dalla normativa.</p>
+        <h2>8. Trasferimenti fuori dallo Spazio Economico Europeo</h2>
+        <p>Alcuni fornitori tecnologici possono operare o trasferire dati al di fuori dello Spazio Economico Europeo. Gli eventuali trasferimenti devono essere verificati in relazione ai servizi effettivamente attivati dal titolare e alle garanzie previste dalla normativa applicabile, incluse, ove pertinenti, decisioni di adeguatezza, clausole contrattuali standard o altri strumenti ammessi dal GDPR.</p>
       </section>
 
       <section class="legal-section">
-        <h2>8. Diritti dell'interessato</h2>
+        <h2>9. Diritti dell'interessato</h2>
         <p>Nei casi previsti dal GDPR, l'interessato può esercitare i diritti di accesso, rettifica, cancellazione, limitazione, opposizione e portabilità, nonché revocare un eventuale consenso prestato quando il trattamento si basa sul consenso.</p>
         <p>Per esercitare i propri diritti è possibile contattare il titolare ai recapiti indicati in questa pagina.</p>
       </section>
 
       <section class="legal-section">
-        <h2>9. Reclamo all'autorità di controllo</h2>
+        <h2>10. Reclamo all'autorità di controllo</h2>
         <p>L'interessato che ritenga che il trattamento dei propri dati personali violi la normativa applicabile può proporre reclamo all'autorità di controllo competente, in particolare al Garante per la protezione dei dati personali.</p>
       </section>
 
       <section class="legal-section">
-        <h2>10. Aggiornamenti</h2>
-        <p>La presente informativa può essere aggiornata in caso di modifiche al sito, ai servizi utilizzati o alla normativa applicabile.</p>
-        <p><strong>Ultimo aggiornamento:</strong> 22 agosto 2026.</p>
+        <h2>11. Aggiornamenti</h2>
+        <p>La presente informativa può essere aggiornata in caso di modifiche al sito, al modulo di contatto, ai servizi utilizzati o alla normativa applicabile.</p>
+        <p><strong>Ultimo aggiornamento:</strong> 23 agosto 2026.</p>
       </section>
     </article>
   </main>
