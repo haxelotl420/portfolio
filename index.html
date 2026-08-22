@@ -111,7 +111,35 @@
     </section>
 
     <section class="contact section" id="contact">
-      <div class="contact-orbit" aria-hidden="true"></div><div class="section-label reveal"><span>05</span><span>Contact</span></div><div class="contact-content reveal"><p class="overline">HAVE A PROJECT?</p><h2>Mandami<br>il <em>materiale.</em></h2><a class="contact-mail" href="#contact">Email: dennisbertozzi@haxed.art <span>↗</span></a></div><div class="contact-meta reveal"><span>Freelance / Remote</span><span>Italy + Worldwide</span><span>© 2026 Dennis Bertozzi / Haxed</span></div>
+      <div class="contact-orbit" aria-hidden="true"></div>
+      <div class="section-label reveal"><span>05</span><span>Contact</span></div>
+      <div class="contact-content reveal">
+        <p class="overline">HAVE A PROJECT?</p>
+        <h2>Mandami<br>il <em>materiale.</em></h2>
+        <form class="contact-form" id="contact-form" action="/api/contact" method="post" novalidate>
+          <div class="contact-form-grid">
+            <label class="contact-field">
+              <span>Nome / Azienda</span>
+              <input type="text" name="name" autocomplete="name" maxlength="120" required placeholder="Nome o azienda">
+            </label>
+            <label class="contact-field">
+              <span>Mail</span>
+              <input type="email" name="email" autocomplete="email" maxlength="254" required placeholder="nome@azienda.it">
+            </label>
+          </div>
+          <label class="contact-field contact-field-message">
+            <span>Richiesta</span>
+            <textarea name="message" rows="5" maxlength="5000" required placeholder="Raccontami il progetto, cosa ti serve e le tempistiche."></textarea>
+          </label>
+          <div class="contact-form-bottom">
+            <input class="contact-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="contact-form-note">I dati inseriti vengono usati per rispondere alla richiesta. <a href="privacy-policy.html">Privacy Policy</a></p>
+            <button class="contact-submit" type="submit">Invia richiesta <span>↗</span></button>
+          </div>
+          <p class="contact-form-status" id="contact-form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="contact-meta reveal"><span>Freelance / Remote</span><span>Italy + Worldwide</span><span>© 2026 Dennis Bertozzi / Haxed</span></div>
     </section>
   </main>
 
