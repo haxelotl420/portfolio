@@ -1,3 +1,4 @@
+import "./theme.js";
 import { initTicker } from "./ticker.js";
 import { initReveal } from "./reveal.js";
 import { initProgressBar } from "./progress-bar.js";
