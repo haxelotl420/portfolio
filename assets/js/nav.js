@@ -1,6 +1,7 @@
 export function initNav() {
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".site-nav");
+  const header = document.querySelector(".site-header");
   const links = [...document.querySelectorAll(".site-nav [data-nav]")];
   const sections = links
     .map((link) => document.getElementById(link.dataset.nav))
@@ -10,6 +11,11 @@ export function initNav() {
     if (!nav || !toggle) return;
     nav.classList.remove("open");
     toggle.setAttribute("aria-expanded", "false");
+  };
+
+  const updateHeaderSurface = () => {
+    if (!header) return;
+    header.classList.toggle("is-scrolled", window.scrollY > 12);
   };
 
   toggle?.addEventListener("click", () => {
@@ -37,6 +43,9 @@ export function initNav() {
 
     sections.forEach((section) => observer.observe(section));
   }
+
+  updateHeaderSurface();
+  window.addEventListener("scroll", updateHeaderSurface, { passive: true });
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 850) closeMenu();
