@@ -1,0 +1,83 @@
+/* HAXED — header positioning + scroll surface fix */
+
+.site-header {
+  transition:
+    background-color .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease,
+    padding .25s ease,
+    transform .25s ease;
+}
+
+/* Keep the header readable when it crosses page content. */
+.site-header.is-scrolled {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(16, 17, 19, .08);
+  mix-blend-mode: normal;
+}
+
+body.dark-mode .site-header.is-scrolled {
+  background: var(--dark-paper);
+  border-bottom-color: var(--dark-line);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
+}
+
+@media (max-width: 850px) {
+  .site-header {
+    position: fixed !important;
+    top: env(safe-area-inset-top, 0px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 4px 14px !important;
+    min-height: 48px;
+    z-index: 80;
+    transform: translateZ(0);
+  }
+
+  .header-left {
+    gap: 7px;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
+  .brand-logo-wrap {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+  }
+
+  .theme-toggle {
+    margin: 0;
+  }
+
+  .menu-toggle {
+    margin: 0;
+  }
+
+  /* The header is fixed, so keep the first hero content below it. */
+  .hero {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    padding: 3px 12px !important;
+    min-height: 44px;
+  }
+
+  .brand-logo-wrap {
+    width: 23px;
+    height: 23px;
+    flex-basis: 23px;
+  }
+
+  .hero {
+    padding-top: 54px;
+  }
+}
