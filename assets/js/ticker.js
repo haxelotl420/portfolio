@@ -9,11 +9,15 @@ export function initTicker() {
   let speed = 0;
   let raf = 0;
   let last = performance.now();
+  let resizeObserver = null;
   const GAP = 26;
 
   const measure = () => {
+    // Measure after fonts/layout are settled. A stale width here can make
+    // two copies drift into each other after a font load or viewport change.
     setWidth = sets[0].getBoundingClientRect().width;
     speed = setWidth / 24;
+    return setWidth > 0;
   };
 
   const render = () => {
@@ -27,8 +31,8 @@ export function initTicker() {
     last = now;
     positions = positions.map(x => x - speed * dt);
 
-    // Keep three copies cycling from right to left. Whenever one fully
-    // exits the left edge, place it immediately after the rightmost copy.
+    // Keep the copies strictly one full set + GAP apart. Using the current
+    // rightmost position prevents duplicate copies from ever stacking.
     for (let i = 0; i < positions.length; i++) {
       if (positions[i] <= -setWidth) {
         const rightmost = Math.max(...positions);
@@ -42,12 +46,19 @@ export function initTicker() {
 
   const start = () => {
     cancelAnimationFrame(raf);
-    measure();
+    if (!measure()) {
+      requestAnimationFrame(start);
+      return;
+    }
 
-    // One group centered, one immediately to its left, one immediately to
-    // its right: the ticker is populated across the whole box from frame 1.
+    // Three complete copies are laid out from a single measured width.
+    // This avoids the rare overlap caused by starting before web fonts finish.
     const center = (window.innerWidth - setWidth) / 2;
-    positions = [center - setWidth - GAP, center, center + setWidth + GAP];
+    positions = [
+      center - setWidth - GAP,
+      center,
+      center + setWidth + GAP
+    ];
     render();
 
     last = performance.now();
@@ -55,6 +66,17 @@ export function initTicker() {
   };
 
   start();
+
+  // Web fonts can change the measured width after the first paint.
+  document.fonts?.ready.then(start).catch(() => {});
+
+  // Re-measure if the ticker's actual layout width changes (including
+  // mobile browser viewport changes), rather than relying only on resize.
+  if ("ResizeObserver" in window) {
+    resizeObserver = new ResizeObserver(() => start());
+    resizeObserver.observe(sets[0]);
+  }
+
   window.addEventListener("resize", start, { passive: true });
   reduceMotion.addEventListener?.("change", start);
 }
