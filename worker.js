@@ -112,7 +112,8 @@ function safeNextPath(value) {
 
 function wallPage(request, message = "", status = 200) {
   const url = new URL(request.url);
-  const next = safeNextPath(`${url.pathname}${url.search}`);
+  const requestedNext = url.pathname === "/__wall/login" ? "/" : `${url.pathname}${url.search}`;
+  const next = safeNextPath(requestedNext);
   const safeMessage = escapeHtml(message);
   const messageBlock = safeMessage
     ? `<p class="wall-message" role="alert">${safeMessage}</p>`
